@@ -1,13 +1,13 @@
-//shy
-//character doing a public speech
-//mouse drag -> character stays for three seconds(turns red)
-//            -> returns to backstage
-//            -> repeat
+Figure shy;
+Figure audience;
 
 void setup(){
   
- size(400, 400);
+ size(600, 400);
  background(0);
+ 
+ shy = new Figure();
+ Figure[]audience = new Figure [20];
   
 }
 
@@ -15,11 +15,14 @@ void draw(){
 
   stage();
   
+  shy.display();
+  
+  
 }
 
 void stage(){
   
-  fill(255, 137, 80);
-  rect(150, 0, 250, 400);
+ // fill(255, 137, 80);
+ // rect(150, 0, 250, 400);
 
 }
