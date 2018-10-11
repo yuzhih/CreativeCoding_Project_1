@@ -1,5 +1,7 @@
 Figure shy;
-Figure audience;
+Figure[]audience = new Figure [20];
+
+int s = second();
 
 void setup(){
   
@@ -7,22 +9,29 @@ void setup(){
  background(0);
  
  shy = new Figure();
- Figure[]audience = new Figure [20];
+
   
 }
 
 void draw(){
-
+  rectMode(CENTER);
+  
   stage();
   
-  shy.display();
+  for (int i = 0; i < audience.length; i++){
+   
+  // audience[i].sit(); 
+    
+  }
   
+  //shy.display(0, 0);
+  shy.redden(0, 0);  //
+  shy.move();    //repeat
   
 }
-
 void stage(){
-  
- // fill(255, 137, 80);
- // rect(150, 0, 250, 400);
+  noStroke();
+  fill(152, 127, 118);
+  rect(width/2, height/2, 200, 400);
 
 }

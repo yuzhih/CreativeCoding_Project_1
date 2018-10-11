@@ -11,6 +11,9 @@ class Figures -> black stick figure
 
 array + for loops -> audience
 
+set:
+stage(with a desk)
+seats(for audience, within sit();)
 
 
 
