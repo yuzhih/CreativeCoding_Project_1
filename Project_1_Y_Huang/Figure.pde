@@ -1,57 +1,71 @@
-class Figure{
-  
+class Figure { //<>//
+
   float xLoc, yLoc;
-  float xSpeed;
-  
-  Figure(float xLoc_, float yLoc_, float xSpeed_){
-    
+
+
+
+  Figure(float xLoc_, float yLoc_) {
+
     xLoc = xLoc_;
     yLoc = yLoc_;
-    xSpeed_ = xSpeed;
   }
-  
-  void display(){ //main character
-    stroke(255);
-    
-    fill(0);
-    rect(width/2 + xLoc - 3, height/2 + yLoc + 50, 3, 40); //left leg
-    rect(width/2 + xLoc + 3, height/2 + yLoc + 50, 3, 40); //right leg
-    rect(width/2 + xLoc, height/2 + yLoc + 20, 10, 50); //body
-    ellipse(width/2 + xLoc, height/2 + yLoc, 20, 20); //head
-    
+
+  void display() {
+
+    rect(xLoc - 5, yLoc + 80, 7, 60); //left leg
+    rect(xLoc + 5, yLoc + 80, 7, 60); //right leg
+    rect(xLoc, yLoc + 40, 18, 50); //body
+    ellipse(xLoc, yLoc, 30, 30); //head
   }
-  
-  void redden(int x, int y){ //where the figure feels embarrassed and turns red
-    frameRate(30);
+
+  void shade(int c) {
+    stroke(255);   
+    fill(c);
+    display();
+  }
+
+  void redden() { 
     s = second();
-    r = s * 20;
+    r = s * 15;
     fill(r, 0, 0);
-    while(r > 255){
-      r = 0;
+    stroke(r, 200, 200);
+    if (r > 255) {
+      r = 0;     
     }
-    rect(width/2 + x, height/2 + y + 20, 10, 50); 
-    ellipse(width/2 + x, height/2 + y, 20, 20);
+    display();
+    arms();
+  }
+  
+  void arms(){    
+    strokeWeight(3);
+    
+    pushMatrix();
+    if(s > 5){      
+      s = 5;     
+    }
+    translate(s, -s * 5);
+    line(width/2 - 10, height/2 + 18, width/2 - 10, height/2 + 58);
+
+    popMatrix();
+    
+    pushMatrix();
+    translate(-s, -s * 5);
+    line(width/2 + 10, height/2 + 18, width/2 + 10, height/2 + 58);
+    if(s > 5){      
+      s = 5;     
+    }
+    popMatrix();
+
     
   }
   
-  void move(){
-   
-    xLoc = xLoc + xSpeed;
-    if(xLoc > width) {
-      xLoc = 450;
-    }
+  void face(){
+    strokeWeight(1);
+    fill(255);
+    ellipse(width/2 - 5, height/2 - 3, 3, 3 - 0.5 * s); //left eye
+    ellipse(width/2 + 5, height/2 - 3, 3, 3 - 0.5 * s); //right eye
+
+}
     
-  }
-  
-  //void sit(int x, int y){ //for the audience
-  
-  //  stroke(255);
-  //  fill(0);
-  //  rect(width/2 + x, height/2 + y + 20, 10, 50); //body
-  //  ellipse(width/2 + x, height/2 + y, 20, 20); //head
-  //  rect(width/2 - 3, height/2 + 50, 3, 40); //left leg
-  //  rect(width/2 + 3, height/2 + 50, 3, 40); //right leg
-  
-  //}
-  
+
 }

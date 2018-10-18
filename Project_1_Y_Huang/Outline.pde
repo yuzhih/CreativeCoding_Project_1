@@ -2,12 +2,12 @@
 
 adjective: shy
 
-character(figure.shy) doing a public speech
-mouse drag -> figure stays for three(?) seconds(turns red)
-           -> returns to backstage
-           -> repeat
-  
-class Figures -> black stick figure
+character(figure.shy) stares at the audience
+->face reddens after 5 seconds
+->covers face while smiling
+
+
+class Figures -> stick figure
 
 array + for loops -> audience
 
