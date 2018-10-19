@@ -1,7 +1,7 @@
 Figure mc;
 Figure[]audience = new Figure [30];
 
-int s = second();
+int s;
 int r;
 
 void setup() {
@@ -16,24 +16,39 @@ void setup() {
   for (int i = 0; i < audience.length; i++) {
     audience[i] = new Figure(int(random(width)), int(random(230, height)));
   }
+
 }
 
 void draw() {
-  background(255);
+  background(0);
+  
+  s = second();
+  println(s);
+  if(s <= 20){
+    
+  translate(width/2, height/2);
+  scale(s * 0.3, s * 0.3);
+  translate(-width/2, -height/2); 
 
-   translate(width/2, height/2);
-   scale(s * 0.6, s * 0.6 );
-   translate(-width/2, -height/2);
-  //mc.shade(0); 
   mc.redden();
   mc.face();
-  //mc.arms();
-  
+  mc.arms();
+
   for (int i = 0; i < audience.length; i++) {
     audience[i].shade(int(random(255)));
   }
-
-  if (s > 50) { 
-    s = 50;
   }
+  else{
+    
+    background(20,179, 220);//light blue
+    
+  translate(width/2, height/2);
+  scale(0.02 *s, 0.02 *s);
+  translate(-width/2, -height/2);
+  
+  mc.unredden();
+  //mc.arms(); 
+  mc.reverseArms();
+  }
+  
 }

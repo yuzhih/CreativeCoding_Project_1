@@ -26,20 +26,23 @@ class Figure { //<>//
 
   void redden() { 
     s = second();
-    r = s * 15;
+    r = 50 + s * 15;
     fill(r, 0, 0);
-    stroke(r, 200, 200);
-    if (r > 255) {
+    
+    if (r > 225) {
       r = 0;     
     }
     display();
-    arms();
   }
   
-  void arms(){    
+  void arms(){   
+    pushMatrix();
     strokeWeight(3);
+    stroke(255);
     
     pushMatrix();
+    s = second();
+    
     if(s > 5){      
       s = 5;     
     }
@@ -49,23 +52,64 @@ class Figure { //<>//
     popMatrix();
     
     pushMatrix();
-    translate(-s, -s * 5);
-    line(width/2 + 10, height/2 + 18, width/2 + 10, height/2 + 58);
+    s = second();
     if(s > 5){      
       s = 5;     
     }
+    translate(-s, -s * 5);
+    line(width/2 + 10, height/2 + 18, width/2 + 10, height/2 + 58);
+
     popMatrix();
 
-    
+   popMatrix(); 
   }
   
   void face(){
-    strokeWeight(1);
+    noStroke();
     fill(255);
-    ellipse(width/2 - 5, height/2 - 3, 3, 3 - 0.5 * s); //left eye
-    ellipse(width/2 + 5, height/2 - 3, 3, 3 - 0.5 * s); //right eye
+    if(s > 5){     
+      s = 5;     
+    }
+    ellipse(width/2 - 5, height/2 - 3, 3, 4 - 0.3 * s); //left eye
+    ellipse(width/2 + 5, height/2 - 3, 3, 4 - 0.3 * s); //right eye
+    
 
 }
+
+ void reverseArms(){   
+    pushMatrix();
+    strokeWeight(3);
+    stroke(255);
     
+    pushMatrix();
+    s = second();
+    
+    if(s > 25){      
+      s = 25;     
+    }
+    translate(-s/5, s);
+    line(width/2 - 10, height/2, width/2 - 10, height/2 + 40);
+
+    popMatrix();
+    
+    pushMatrix();
+    s = second();
+    if(s > 25){      
+      s = 25;     
+    }
+    translate(s/5, s);
+    line(width/2 + 10, height/2, width/2 + 10, height/2 + 40);
+    popMatrix();
+
+   popMatrix(); 
+  }
+    
+    void unredden() { 
+    s = second();
+    r = 50 + s * 15;
+    fill(r);    
+    //face();
+    display();
+  }
 
 }
